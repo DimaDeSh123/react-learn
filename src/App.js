@@ -1,23 +1,31 @@
-import logo from './logo.svg';
 import './App.css';
+import { useState } from 'react';
+import Counter from './components/Counter.js';
+import SearchComponent from './components/SearchComponent.js';
+import Genres from './components/Genres.js';
+
 
 function App() {
+  const [currentGenre, setCurrentGenre] = useState("all");
+
+  const handleSearch = (searchQuery) => {
+    console.log('Searching for:', searchQuery);
+  };
+
+  const handleGenreSelect = (genre) => {
+    setCurrentGenre(genre);
+    console.log('Selected Genre:', genre);
+  };
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Counter initialValue={10} />
+      <SearchComponent initialQuery="Initial Query" onSearch={handleSearch} />
+      <Genres 
+        genres={['all', 'Documentary', 'Comedy', 'Horror', 'Crime']} 
+        selectedGenre={currentGenre} 
+        onSelect={handleGenreSelect} 
+      />
     </div>
   );
 }
