@@ -1,7 +1,7 @@
 import React from 'react';
-import '../css/genre.css';
+import './genresTabs.css';
 
-function Genres({ genres, selectedGenre, onSelect }) {
+function GenresTabs({ genres, selectedGenre, onSelect }) {
   return (
     <div className='ganres'>
       {genres.map((genre) => (
@@ -17,4 +17,4 @@ function Genres({ genres, selectedGenre, onSelect }) {
   );
 }
 
-export default Genres;
+export default GenresTabs;
