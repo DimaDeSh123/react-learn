@@ -33,7 +33,7 @@ function GenreSelect({ genres, onSelect }) {
       {isOpen && (
         <div className="genre-selects-container">
           {genres.map((genre) => (
-            <div className="genre-select-container" key={genre} onClick={()=> handleOptionClick(genre)} >
+            <div className="genre-select-container" key={genre}  >
                 <input 
                     id={genre}
                     className="genre-select-selects" 
