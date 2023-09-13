@@ -8,6 +8,7 @@ import GenreSelect from './components/genreSelect/GenreSelect.js';
 
 function App() {
   const [currentGenre, setCurrentGenre] = useState("all");
+  const [selectedOptions, setSelectedOptions] = useState([]);
 
   const handleSearch = (searchQuery) => {
     console.log('Searching for:', searchQuery);
@@ -19,7 +20,13 @@ function App() {
   };
 
   const handleGenreSelect = (selectedGenres) => {
-    console.log('Selected Genres:', selectedGenres);
+    if (selectedOptions.includes(selectedGenres)) {
+      const newSelected = selectedOptions.filter((g) => g !== selectedGenres);
+      setSelectedOptions(newSelected);
+    } else {
+      const newSelected = [...selectedOptions, selectedGenres];
+      setSelectedOptions(newSelected);
+    }
   };
 
   return (
@@ -33,6 +40,7 @@ function App() {
       />
       <GenreSelect 
         genres={['Documentary', 'Comedy', 'Horror', 'Crime']} 
+        selectedOptions={selectedOptions} 
         onSelect={handleGenreSelect} 
       />
     </div>
